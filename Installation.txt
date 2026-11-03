@@ -1,0 +1,166 @@
+# Library Management System
+
+## 1. Installation and Setup
+
+### Prerequisites
+
+Ensure the following software is installed on your system:
+
+- **Java 17 or above** – to run the Spring Boot backend.
+- **Apache Maven** – to build the Spring Boot application.
+- **Node.js and npm** – to install dependencies and run the Angular frontend.
+- **Git** (optional) – to clone the project repository.
+
+### Project Structure
+
+The project contains two applications:
+
+```text
+Library-Management-System/
+├── web/       # Angular application
+├── service/        # Spring Boot application
+├── start.sh        # Linux startup script
+└── start.bat       # Windows startup script
+```
+
+### Installation Steps
+
+1. Clone or download the project.
+2. Ensure Java, Maven, Node.js and npm are installed and configured in your system PATH.
+3. Open a terminal in the project root directory.
+4. Run the appropriate startup script.
+
+**For Windows:**
+
+```bat
+start.bat
+```
+
+**For Linux/macOS:**
+
+```bash
+chmod +x start.sh
+./start.sh
+```
+
+The startup script builds both the Angular frontend and Spring Boot backend, then launches them in separate terminal sessions.
+
+### Accessing the Application
+
+Once both applications have started, open your browser and navigate to:
+
+```text
+http://localhost:4200
+```
+
+The application will display the Login page by default.
+
+---
+
+## 2. Application Workflow
+
+### 2.1 Login Page
+
+- The Login page is the default landing page when the application is opened.
+- Existing users can enter their username and password to log in.
+- New users can click **Create User** to navigate to the user registration page.
+
+### 2.2 Create User
+
+- Enter a username and password.
+- Click the **Create User** button to register a new user.
+- Once the user is successfully created, the application automatically navigates back to the Login page.
+- The newly registered user can now log in using their credentials.
+
+### 2.3 Book Listing Page
+
+After successful login, users are redirected to the Library Book Listing page.
+
+The page displays the books available in the library, along with the following information:
+
+| Column | Description |
+|---|---|
+| Book Name | Name of the book. |
+| Borrowed By Me | Indicates whether the logged-in user has borrowed the book. |
+| Added to Waitlist | Indicates whether the logged-in user has joined the waitlist for a book currently borrowed by someone else. |
+| Availability | Indicates whether the book is available or currently borrowed. |
+
+Users can select a book to navigate to its details and perform the appropriate action.
+
+### 2.4 Book Details and Actions
+
+The Book Details page displays the selected book's information and provides actions based on its current availability and the user's activity.
+
+**Borrow**
+
+- Displayed when the book is available for borrowing.
+- Clicking the Borrow button allows the logged-in user to borrow the book.
+
+**Return**
+
+- Displayed when the logged-in user has already borrowed the book.
+- Clicking the Return button returns the book to the library.
+
+**Waitlist**
+
+- Displayed when the book is currently borrowed by another user.
+- Clicking the Waitlist button adds the logged-in user to the book's waitlist.
+- After successfully joining the waitlist, the Waitlist button becomes disabled to prevent the same user from joining the waitlist multiple times for the same book.
+
+
+2.5 Admin User
+
+Admin users have additional privileges to manage the library and monitor book borrowing activities.
+
+**Add New Books**
+
+- Admin users can add new books to the library.
+- They can enter the required book information and submit it to register a new book.
+- Newly added books become visible in the library book listing.
+
+**View Borrowed Status**
+
+- Admin users can view the borrowing status of books in the library.
+- They can identify which books are currently available and which are borrowed.
+- They can monitor borrowing information without performing borrowing operations themselves.
+
+**Borrowing Restrictions**
+- Admin users cannot borrow books.
+- Borrow and Return actions are not available to admin users.
+- Admin users can only manage books and monitor their borrowing status.
+
+### 2.5 Navigation and User Experience
+
+The application follows this workflow:
+
+1. User opens the application and lands on the Login page.
+2. New users can register through the Create User page.
+3. After successful registration, users return to the Login page.
+4. Existing or newly registered users log in.
+5. Based on their role, users access the appropriate library features.
+6. Regular users can view books, borrow available books, return borrowed books, and join waitlists.
+7. Admin users can add new books and monitor borrowing statuses but cannot borrow or return books.
+
+---
+
+## 3. Application URLs
+
+| Application | URL |
+|---|---|
+| Angular Frontend | http://localhost:4200 |
+| Spring Boot Backend | http://localhost:8080 |
+
+## 4. Troubleshooting
+
+- **Java not found:** Verify that Java is installed and `JAVA_HOME` is configured.
+- **Maven not found:** Ensure Maven is installed and available in the system PATH.
+- **Node/npm not found:** Install Node.js and verify `node -v` and `npm -v`.
+- **Port already in use:** Ensure ports 4200 and 8080 are available before starting the applications.
+- **Frontend cannot connect to backend:** Verify that the Spring Boot application is running and that the frontend API configuration points to the correct backend URL.
+
+## 5. Security and Access Control
+
+- **User authentication is required to access protected library features.
+- **Admin and regular-user permissions are handled according to their assigned roles.
+- **Backend authorization must enforce role-based restrictions.
+- **Borrowing and waitlist operations must be validated on the backend to prevent unauthorized actions and duplicate waitlist entries.

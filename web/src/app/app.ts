@@ -39,7 +39,6 @@ export class App implements OnInit {
           },
         });
       } else {
-
         this.router.navigateByUrl("/home");
       }
     });
