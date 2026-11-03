@@ -1,0 +1,60 @@
+<mat-card class="example-card" appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>{{ isLogin ? 'Login' : 'Create User' }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    @if (isLogin) {
+      <form [formGroup]="loginGroup" (ngSubmit)="login($event)">
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>Username:</mat-label>
+            <input matInput placeholder="Ex. User" formControlName="username" />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>Password:</mat-label>
+            <input matInput type="password" formControlName="password" />
+          </mat-form-field>
+        </div>
+
+        <button mat-raised-button color="primary" type="submit">
+          Login
+        </button>
+      </form>
+      <br/>
+      <button mat-raised-button color="primary" (click)="createUser()">
+        Create User
+      </button>
+    } @else {
+
+      <form [formGroup]="createUserGroup" (ngSubmit)="createUser()">
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>Username:</mat-label>
+            <input matInput placeholder="Ex. User" formControlName="username" />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>Password:</mat-label>
+            <input matInput type="password" formControlName="password" />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>ReType Password:</mat-label>
+            <input matInput type="password" formControlName="passwordConfirm" />
+          </mat-form-field>
+        </div>
+        <button mat-raised-button color="primary" type="submit">
+          Create User
+        </button>
+      </form>
+      <br/>
+      <button mat-raised-button color="primary" type="button" (click)="login($event)">
+        Login
+      </button>
+    }
+  </mat-card-content>
+</mat-card>

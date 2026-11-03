@@ -1,0 +1,32 @@
+login admin
+list
+add "The Great Gatsby"
+ add "1984"
+ logout
+ login Alice
+ list
+ borrow "1984"
+ list
+ status
+ logout
+ login Bob
+ borrow "1985"
+ borrow "1984"
+ waitlist "1985"
+ waitlist "1984"
+ borrow "The Great Gatsby"
+ status
+ logout
+ login Carol
+ waitlist "1984
+ status
+ logout
+ login Alice
+ return "1984"
+ list
+ logout
+ login Bob
+ logout
+ login Carol
+ list
+ return "The Great Gatsby"

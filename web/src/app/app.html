@@ -1,0 +1,12 @@
+<mat-card class="example-card" appearance="outlined">
+  <mat-card-header class="card-header">
+    <mat-card-title>{{ title }}</mat-card-title>
+    @if (isLoggedIn | async) {
+      <button mat-raised-button (click)="logout()">Logout</button>
+    }
+  </mat-card-header>
+  <mat-card-content>
+    <router-outlet />
+  </mat-card-content>
+</mat-card>
+
